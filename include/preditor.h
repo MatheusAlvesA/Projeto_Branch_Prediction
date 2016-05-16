@@ -5,14 +5,25 @@
 class Preditor {
 
 public:
-Preditor(int *[4], int); // este construtor seta os valores
+Preditor(int *[4], int, int predit = 2); // este construtor seta os valores
 ~Preditor() {/*vazio*/}
 
 void processar(void);
 
 private:
  int interacoes;
+ int preditor;
+ bool bitA = true;
+ bool bitB = true;
+ bool prediction = true; // cimeça como tomado
  int **saltos;
+ int **resultados; // guarda se ouve acerto ou erro naquela predição
+
+ int *extrair_correlacao(int); // extrai a correlação em um vetor que contem os saltos correlacionados
+ bool checar_correlacao(int, int); // retorna se existe alguma correlação e se deve testar o salto
+ bool prever(int); // função de controle de fluxo
+ bool bits(int); // preditor de 2 bits
+ static bool bit(int); // preditor de 1 bit
 
 };
 #include "preditor.cpp" // criando ligação entre a implementação e a classe

@@ -23,4 +23,4 @@ Um arquivo makefile está disponível no repositório, então apenas execute o c
 maquina linux com o compilador g++ instalado, o binario será salvo na pasta bin/
 
 #Até agora
-Apenas a leitura do arquivo está sendo feita, o projeto ainda não começou.
+Apenas a leitura do arquivo está sendo feita, além de várias partes estarem prontas mas ainda não estarem bem testadas e funcionais.
