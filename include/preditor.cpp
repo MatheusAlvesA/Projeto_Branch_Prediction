@@ -19,6 +19,7 @@ void Preditor::processar(void) {
   std::cout << "\n\n";
 
  for(int i = 0; this->saltos[i] != nullptr; i++) {
+  this->limpar_cache();
   for(int j = 1; j < this->interacoes;j++) { // loop principal que percorre as interações
      if(this->checar_correlacao(i, j)) { // se a correlação diz que o salto exterior não foi tomado
      	this->resultados[i][j] = this->prever(this->saltos[i][j]); // salva o resultado dessa predição para a saida
@@ -94,7 +95,7 @@ bool Preditor::prever(int x) {
   return true;
 }
 
-bool Preditor::bits(int x) {
+bool Preditor::bits(int x) { // LOGICA IMPERFEITA NÃO ESTÁ PREVENDO CORRETAMENTE
    if(x == 0) { // o salto não deve ser tomado
     if(this->bitA && this->bitB) { // nesse caso deve mudar um dos bits
       this->bitB = false; // não inverte a predição ainda
@@ -128,10 +129,9 @@ bool Preditor::bits(int x) {
 }
 
 bool Preditor::bit(int x) {
-   bool bit = true; // começa como tomada
-   if(bit) { // vai tomar o salto
+   if(bitA) { // vai tomar o salto
    	if(x == 0) { // se errou na predição
-   		bit = false; // troca a decisão
+   		bitA = false; // troca a decisão
    		return true; // mas retorna a predição que tinha
    	}
    	else
@@ -139,10 +139,16 @@ bool Preditor::bit(int x) {
    }
    else { // não vai tomar o salto
     if(x == 1) { // se errou na predição
-   		bit = true; // troca a decisão
+   		bitA = true; // troca a decisão
    		return false; // mas retorna a predição que tinha
    	}
    	else
    		return false; // acertou
    }
+}
+
+void Preditor::limpar_cache() {
+this->prediction = true;
+this->bitA = true;
+this->bitB = true;
 }

@@ -23,7 +23,8 @@ private:
  bool checar_correlacao(int, int); // retorna se existe alguma correlação e se deve testar o salto
  bool prever(int); // função de controle de fluxo
  bool bits(int); // preditor de 2 bits
- static bool bit(int); // preditor de 1 bit
+ bool bit(int); // preditor de 1 bit
+ void limpar_cache(); // faz a predição voltar ao estado inicial de tomado
 
 };
 #include "preditor.cpp" // criando ligação entre a implementação e a classe

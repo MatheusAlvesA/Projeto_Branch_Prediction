@@ -25,7 +25,7 @@ int main(int argc, char * argv[]) {
     matriz[x] = nullptr;
 
    int quantas = tokenizar(matriz, nome); // faz a leitura e a extração dos dados para o arquivo
-    Preditor preditor(matriz, quantas);
+    Preditor preditor(matriz, quantas+1, 2);
     preditor.processar();
 
    for(int x = 0; x < 4; x++);
